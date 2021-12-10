@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, DetailView
 from .models import Palabras
+import re
 import requests
 from bs4 import BeautifulSoup
 
@@ -20,7 +21,12 @@ class ContCreateView(CreateView):
         data = page.text
         soup = BeautifulSoup(data,features="html.parser")
         self.text = soup.get_text()
-        form.instance.texto = self.text
+        final = [re.sub('[!,*)@#%(&$_?.^–:®↑()«/-−]', '', k) for k in self.text.split("\n")]
+        textonew= ''
+        for x in final:
+            if x != '':
+                textonew += x
+        form.instance.texto = textonew
         return super().form_valid(form)
 
 class ContDetailView(DetailView):
