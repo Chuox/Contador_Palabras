@@ -3,19 +3,18 @@
         <input class="textinput textInput form-control" type="text" unicorn:model.lazy="url" placeholder="url" id="url"></input>
     </form>
     <button class="btn btn-outline-info" unicorn:click="count">Contar Palabras</button>
-
+<!-- TODO: Check box si se desea incluir articulos -->
+<!-- TODO: Mostar pagina de espera mientras se realiza el scraping -->
     <p> 
         {% if palabras %}
         <ul>
-            {% for palabra in palabras %}
-            <li>{{ palabra }}</li>
+            {% for key, val in cuenta.items %}
+                <li>{{key}}: {{val}}</li>
             {% endfor %}
-            {{ cuenta }}
         </ul>
-        
         <button class="btn btn-outline-info" unicorn:click="$reset">Limpiar</button>
         {% else %}
-            Agregue una dirección url y haga click en el boton para contar las palabras en la pagina web
+            Agregue una dirección url y haga click en el boton para contar las palabras en la pagina web, el proceso es algo lento, dependiendo del contenido de la pagina.
         {% endif %}
     </p>
 </div>
