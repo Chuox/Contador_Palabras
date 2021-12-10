@@ -1,0 +1,21 @@
+<div>
+    <form unicorn:submit.prevent="add">
+        <input class="textinput textInput form-control" type="text" unicorn:model.lazy="url" placeholder="url" id="url"></input>
+    </form>
+    <button class="btn btn-outline-info" unicorn:click="count">Contar Palabras</button>
+
+    <p> 
+        {% if palabras %}
+        <ul>
+            {% for palabra in palabras %}
+            <li>{{ palabra }}</li>
+            {% endfor %}
+            {{ cuenta }}
+        </ul>
+        
+        <button class="btn btn-outline-info" unicorn:click="$reset">Limpiar</button>
+        {% else %}
+            Agregue una dirección url y haga click en el boton para contar las palabras en la pagina web
+        {% endif %}
+    </p>
+</div>

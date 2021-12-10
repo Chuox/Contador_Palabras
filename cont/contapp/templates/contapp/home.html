@@ -1,0 +1,9 @@
+{% extends "contapp/base.html" %}
+{% block content %}
+{% load unicorn %}
+<article class="media content-section">
+    {% unicorn_scripts %}
+    {% csrf_token %}
+    {% unicorn 'contcomp' %}
+</article>
+{% endblock content %}
