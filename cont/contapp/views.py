@@ -12,7 +12,10 @@ class ContCreateView(CreateView):
     template_name = 'contapp/cont_form.html'
 
     def form_valid(self, form):
-        url = form.instance.url
+        if form.instance.url.startswith('http://') or form.instance.url.startswith('https://'):
+            url = form.instance.url
+        else:
+            url = "http://" +form.instance.url
         page = requests.get(url)
         data = page.text
         soup = BeautifulSoup(data,features="html.parser")

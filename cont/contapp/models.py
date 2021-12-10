@@ -4,7 +4,7 @@ from django.urls import reverse
 # Create your models here.
 
 class Palabras(models.Model):
-    url = models.CharField(max_length=99999,default="")
+    url = models.CharField(max_length=99999,default="https://es.wikipedia.org/")
     texto = models.CharField(max_length=9999999,default="")
     def __str__(self):
         return self.url
